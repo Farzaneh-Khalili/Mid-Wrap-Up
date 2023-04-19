@@ -1,29 +1,46 @@
+import java.util.Scanner;
+
 public class Lecture4Exercises {
+    /////////////////////////////////////////////////////////////////
 
     /*
      *   implement a function that returns factorial of given n
      *   lecture 4 page 15
      */
-    public long factorial(int n) {
-        return 0L;
+    public static long factorial(int n) {
+        if (n == 1 || n == 0)
+            return 1;
+        else
+            return n * factorial(n - 1);
     }
+    ///////////////////////////////////////////////////////////////////////////////////
 
     /*
      *   implement a function that return nth number of fibonacci series
      *   the series -> 1, 1, 2, 3, 5, 8, ...
      *   lecture 4 page 19
      */
-    public long fibonacci(int n) {
-        return 0;
+    public static long fibonacci(int n) {
+        if (n == 1 || n == 2)
+            return 1;
+        else
+            return fibonacci(n - 2) + fibonacci(n - 1);
     }
 
     /*
      *   implement a function that return reverse of a given word
      *   lecture 4 page 19
      */
-    public String reverse(String word) {
-        return null;
+    public static String reverse(String word) {
+        String newStr = "";
+        char ch;
+        for (int i = 0; i < word.length(); i++) {
+            ch = word.charAt(i);
+            newStr = ch + newStr;
+        }
+       return newStr;
     }
+    ////////////////////////////////////////////////////////////////////////////////
 
     /*
      *   implement a function that returns true if the given line is
@@ -31,9 +48,21 @@ public class Lecture4Exercises {
      *   palindrome is like 'wow', 'never odd or even', 'Wow'
      *   lecture 4 page 19
      */
-    public boolean isPalindrome(String line) {
-        return false;
+    public static boolean isPalindrome(String line) {
+        String withoutSpace = line.replaceAll("\s", "");
+        String newStr = "";
+        char ch;
+        String lower = withoutSpace.toLowerCase();
+        for (int i = 0; i < lower.length(); i++) {
+            ch = lower.charAt(i);
+            newStr = ch + newStr;
+        }
+        if (newStr.equals(lower))
+            return true;
+        else
+            return false;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     /*
      *   implement a function which computes the dot plot of 2 given
@@ -47,6 +76,19 @@ public class Lecture4Exercises {
      *   lecture 4 page 26
      */
     public char[][] dotPlot(String str1, String str2) {
-        return null;
+        int len1 = str1.length();
+        int len2 = str2.length();
+        char[][] res = new char[len1][len2];
+        for (int i = 0; i < len1; i++) {
+            for (int j = 0; j < len2; j++) {
+                if (str1.charAt(i) == str2.charAt(j)) {
+                    res[i][j] = '*';
+                }
+                else {
+                    res[i][j] = ' ';
+                }
+            }
+        }
+        return res;
     }
 }
